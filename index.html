@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <base href="https://quanx123.github.io/mysite/">
+    <!--<base href="https://quanx123.github.io/mysite/">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mine Mine - my test site.">
@@ -15,8 +15,11 @@
             0% {
                 transform: translate(-50%,-50%) translateY(0);
             }
+            25%{
+                transform: translate(-50%,-50%) translateX(-30vw) scale(1.5);
+            }
             99% {
-                transform: translate(-50%,-50%) translateX(120vh) scale(0.3);
+                transform: translate(-50%,-50%) translateX(90vh) scale(0.1);
             }
             100% {
                 transform: translate(-50%,-50%) translateX(0);
@@ -24,8 +27,54 @@
             
         }
         .滑动 {
-            animation: 滑动 1.6s ease-in-out forwards;
+            animation: 滑动 2.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
         }
+        @keyframes 平滑渐变 {
+        0% {
+            background-position: 0% 50%;
+        }
+        20% {
+            background-position: 20% 80%; /* 向右下移动 */
+        }
+        40% {
+            background-position: 40% 20%; /* 向右上移动 */
+        }
+        60% {
+            background-position: 60% 70%; /* 向右下移动 */
+        }
+        80% {
+            background-position: 80% 30%; /* 向右上移动 */
+        }
+        100% {
+            background-position: 100% 50%; /* 回到初始位置 */
+        }
+    }
+
+    #d1 {
+        animation: 平滑渐变 6s infinite cubic-bezier(0.25, 1, 0.5, 1); /* 使用贝塞尔曲线增强自然感 */
+        background: linear-gradient(120deg, #0f2027, #203a43, #2c5364, #3a1c71, #d76d77, #ffaf7b);
+        background-size: 300% 300%; /* 扩大背景尺寸，增强动态效果 */
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        font-size: 3rem;
+        transition: all 3.8s;
+    }
+    #b {
+        color: rgba(206, 154, 193, 0.322);
+        transition: color 4.2s,all 4.2s ;
+        display:block ;
+        position: absolute;
+        bottom: 30vh;left: 50%;
+        transform:translate(-50%,-50%);
+        letter-spacing:0.5rem;
+        background-color: rgba(0, 0, 0,0);
+        border: 1px solid rgba(193, 194, 255, 0);
+    }
     </style>
 </head>
 <script>
@@ -37,14 +86,15 @@
         audio.loop = true; // 循环播放
         audio.play();
         document.getElementById('d1').style.opacity = 0; // 设置透明度为0
-        event.target.style.opacity = 0; // 设置按钮透明度为0
-        event.target.style.pointerEvents = 'none'; // 禁用按钮点击事件
-        event.target.classList.add('滑动'); // 添加滑动动画类
+        button = document.getElementById('b'); // 获取按钮元素
+        button.style.pointerEvents = 'none'; // 禁用按钮点击事件
+        button.classList.add('滑动'); // 添加滑动动画类
+        document.getElementById('b').style.color = 'rgb(166, 114, 153)' // 设置颜色
     }
 </script>
 <body style="position: relative;">
-    <div id="d1"  style="top: 0;left: 0;z-index: 2;position: absolute;font-size: 3rem;width: 100vw;height: 100vh;background-color:rgb(29, 0, 56);transition: all 1.6s;">
-        <button onclick="playAudio(event)" style="transition: all 4.2s;display:block ;position: absolute;bottom: 30vh;left: 50%;transform:translate(-50%,-50%);letter-spacing:0.5rem;background-color: rgba(224, 200, 255, 0);border: 1px solid rgba(193, 194, 255, 0);color: rgb(109, 36, 177);" >
+    <div id="d1" >
+        <button id="b" onclick="playAudio(event)" >
             进入<span style="font-size: 2.4rem;display: inline-block;" class="layui-icon layui-icon-right"></span></button>
     </div>
     
