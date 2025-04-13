@@ -16,7 +16,7 @@
                 transform: translate(-50%,-50%) translateY(0);
             }
             25%{
-                transform: translate(-50%,-50%) translateX(-30vw) scale(1.5);
+                transform: translate(-50%,-50%) translateX(-20vw) scale(1.5);
             }
             99% {
                 transform: translate(-50%,-50%) translateX(90vh) scale(0.1);
@@ -63,18 +63,53 @@
         z-index: 2;
         font-size: 3rem;
         transition: all 3.8s;
+        pointer-events: none;
     }
     #b {
         color: rgba(206, 154, 193, 0.322);
+        font-family: 黑体;
+        font-size: 5rem;
         transition: color 4.2s,all 4.2s ;
         display:block ;
         position: absolute;
-        bottom: 30vh;left: 50%;
+        top: 50%;left: 50%;
         transform:translate(-50%,-50%);
         letter-spacing:0.5rem;
         background-color: rgba(0, 0, 0,0);
         border: 1px solid rgba(193, 194, 255, 0);
+        pointer-events: auto;
     }
+    #top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 15vh;
+        background-color:#8888884b;
+        filter: blur(3px);
+    }
+    #top::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 0;
+        bottom: -2px;
+        height: 3px;
+        background-color: rgba(59, 110, 219, 0.747); /* 半透明白色背景 */
+        transition: width 0.8s ease-in-out; /* 平滑过渡效果 */
+    }
+    #top:hover::after{
+        width: 100%;
+    }
+    body {
+    min-height: 100vh; /* 确保 body 的高度至少为视口高度 */
+    background-size: cover; /* 背景图片覆盖整个视口 */
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+    background-position: center; /* 背景图片居中显示 */
+    background-attachment: fixed; /* 背景固定在视口上 */
+    background-image: url('https://v2.xxapi.cn/api/random4kPic?type=wallpaper&return=302'); /* 替换为你的背景图片链接 */
+}
     </style>
 </head>
 <script>
@@ -90,13 +125,15 @@
         button.style.pointerEvents = 'none'; // 禁用按钮点击事件
         button.classList.add('滑动'); // 添加滑动动画类
         document.getElementById('b').style.color = 'rgb(166, 114, 153)' // 设置颜色
+        button.style.pointerEvents =  'none'; // 禁用按钮点击事件
     }
 </script>
 <body style="position: relative;">
     <div id="d1" >
         <button id="b" onclick="playAudio(event)" >
-            进入<span style="font-size: 2.4rem;display: inline-block;" class="layui-icon layui-icon-right"></span></button>
+            进入<span style="font-size: 4.2rem;display: inline-block;" class="layui-icon layui-icon-right"></span>
+        </button>
     </div>
-    
+    <div id="top"></div>
 </body>
 </html>
