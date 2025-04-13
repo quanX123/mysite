@@ -1,1 +1,32 @@
-<h1>Hello,小汤Q!!!</h1>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mine Mine - my test site.">
+    <meta name="keywords" content="Mine Mine, test site, HTML, CSS, JavaScript">
+    <meta name="author" content="quanX">
+    <title>Mine Mine</title>
+</head>
+<script>
+    audio = null // 声明音频变量
+</script>
+<script>
+    function playAudio(event) {
+        audio = new Audio('https://dlink.host/musics/aHR0cHM6Ly9vbmVkcnYtbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwvc3Rvcl9vbmVkcnZfb25taWNyb3NvZnRfY29tL0VWYU5YNnc5OElOS2w4TkJMRXpIbkJNQkVsS1E5ZEFRLUd3Vml3MzFOYUhOMkE.mp3');
+        audio.loop = true; // 循环播放
+        audio.play();
+        document.getElementById('d1').style.opacity = 0; // 设置透明度为0
+        event.target.style.opacity = 0; // 设置按钮透明度为0
+        event.target.style.pointerEvents = 'none'; // 禁用按钮点击事件
+    }
+</script>
+<body style="position: relative;">
+    <div id="d1" style="z-index: 2;position: absolute;font-size: 3rem;width: 100vw;height: 100vh;background-color:rgb(29, 0, 56);transition: all 1.6s;">
+        <button onclick="playAudio(event)" style="transition: all 2.8s;display:block ;position: absolute;bottom: 30vh;left: 50%;transform:translate(-50%,-50%);letter-spacing:0.5rem;background-color: rgba(224, 200, 255, 0);border: 1px solid rgba(193, 194, 255, 0);color: rgb(109, 36, 177);" >
+            进入<span style="font-size: 2.4rem;display: inline-block;" class="layui-icon layui-icon-right"></span></button>
+    </div>
+    <div style="margin: 1.2rem;z-index: 1;position: fixed;top: 0;height: 12vh;width: 100vw;;border: 2px solid rgb(202, 228, 255);"></div>
+</body>
+</html>
