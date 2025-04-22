@@ -1,0 +1,148 @@
+@keyframes 滑动 {
+    0% {
+        transform: translate(-50%,-50%) translateY(0);
+    }
+    25%{
+        transform: translate(-50%,-50%) translateX(-20vw) scale(1.5);
+    }
+    99% {
+        transform: translate(-50%,-50%) translateX(90vh) scale(0.1);
+    }
+    100% {
+        transform: translate(-50%,-50%) translateX(0);opacity: 0;
+    }
+    
+}
+.滑动 {
+    animation: 滑动 2.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+}
+@keyframes 平滑渐变 {
+0% {
+    background-position: 0% 50%;
+}
+20% {
+    background-position: 20% 80%; /* 向右下移动 */
+}
+40% {
+    background-position: 40% 20%; /* 向右上移动 */
+}
+60% {
+    background-position: 60% 70%; /* 向右下移动 */
+}
+80% {
+    background-position: 80% 30%; /* 向右上移动 */
+}
+100% {
+    background-position: 100% 50%; /* 回到初始位置 */
+}
+}
+
+#d1 {
+animation: 平滑渐变 6s infinite cubic-bezier(0.25, 1, 0.5, 1); /* 使用贝塞尔曲线增强自然感 */
+background: linear-gradient(120deg, #0f2027, #203a43, #2c5364, #3a1c71, #d76d77, #ffaf7b);
+background-size: 300% 300%; /* 扩大背景尺寸，增强动态效果 */
+width: 100vw;
+height: 100vh;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 2;
+font-size: 3rem;
+transition: all 3.8s;
+pointer-events: none;
+position: fixed;
+}
+#b {
+color: rgba(206, 154, 193, 0.322);
+font-family: 黑体;
+font-size: 5rem;
+transition: color 4.2s,all 4.2s ;
+display:block ;
+position: absolute;
+top: 50%;left: 50%;
+transform:translate(-50%,-50%);
+letter-spacing:0.5rem;
+background-color: rgba(0, 0, 0,0);
+border: 1px solid rgba(193, 194, 255, 0);
+pointer-events: auto;
+}
+#top {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+width: 100vw;
+height: 15vh;
+background-color:#8888884b;
+filter: blur(3px);
+}
+#top::after{
+content: '';
+position: absolute;
+left: 0;
+width: 0;
+bottom: -2px;
+height: 3px;
+background-color: rgba(59, 110, 219, 0.747); /* 半透明白色背景 */
+transition: width 0.8s ease-in-out; /* 平滑过渡效果 */
+}
+#top:hover::after{
+width: 100%;
+}
+body {
+min-height: 100vh; /* 确保 body 的高度至少为视口高度 */
+background-size: cover; /* 背景图片覆盖整个视口 */
+background-repeat: no-repeat; /* 防止背景图片重复 */
+background-position: center; /* 背景图片居中显示 */
+background-attachment: fixed; /* 背景固定在视口上 */
+background-image: url('https://v2.xxapi.cn/api/random4kPic?type=wallpaper&return=302'); /* 替换为你的背景图片链接 */
+}
+.center_block {
+margin: auto;
+}
+/* 默认样式 */
+.main {
+    width: 60%;
+    height: 500vh;
+    background-color: #0f202757;
+    margin-top: 18vh;
+    margin-bottom: 18vh;
+    border-radius: 5px;
+    padding: 0.8rem;
+}
+
+/* 针对平板设备 */
+@media screen and (max-width: 768px) {
+    .main {
+        width: 80%;
+        height: auto;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+    #b {
+        font-size: 4rem;
+    }
+}
+
+/* 针对手机设备 */
+@media screen and (max-width: 480px) {
+    .main {
+        width: 95%;
+        height: auto;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    #b {
+        font-size: 3rem;
+        letter-spacing: 0.2rem;
+    }
+    #d1 {
+        font-size: 2rem;
+    }
+}
+.outmain {
+width: 100%;
+height: 100vh;
+overflow: hidden;
+}
